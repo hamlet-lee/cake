@@ -216,7 +216,8 @@ $(function(){
 			var o = db[i];
 			for( var j=0; j<itmList.length; j++){
 				var q = o.content[itmList[j]];
-				var myTs = (typeof(o.ts) == "string" && o.ts.indexOf(" ") > 0)? Date.parse(o.ts): o.ts;
+				//var myTs = (typeof(o.ts) == "string" && o.ts.indexOf(" ") > 0)? Date.parse(o.ts): o.ts;
+				var myTs = o.ts;
 				if( q > 0) {
 					uploadList.push({
 						ts: myTs,
