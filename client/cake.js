@@ -227,7 +227,7 @@ $(function(){
 				}
 			}
 		}
-		console.log( JSON.stringify( uploadList ) );
+		alert( JSON.stringify( uploadList ) );
 		$.ajax({
 			url: "/addMany",
 			method: "POST",
