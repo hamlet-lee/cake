@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	    <meta charset="UTF-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+	    <title>蛋糕记账</title>
+	    <style>
+	    	body {
+	    		width: 4cm;
+	    		font-size: 10px;
+	    		padding-top: 1em;
+	    	}
+
+	    	#allitms{
+	    		font-size: 1.5em;
+	    	}
+
+	    	.choice {
+	    		border-style: solid;
+	    		margin-left: 1em;
+	    	}
+	    	#work{
+	    		margin-top: 1em;
+	    	}
+
+	    	body {
+	    		text-align: center;
+	    	}
+
+	    	.btn{
+	    		width: 5em;
+	    		height: 5em;
+	    		font-size: 2em;
+	    	}
+
+	    	#btnClear{
+	    		margin-top: 3em;
+	    	}
+
+	    	#work{
+	    		margin-top: 1em;
+	    		margin-bottom: 1em;
+	    	}
+
+	    	#editing{
+	    		font-size: 1.3em;
+	    	}
+
+	    	.workTbl td{
+	    		width: 50%;
+	    	}
+
+	    	.tdNum {
+	    		font-size: 2em;
+	    	}
+
+	    	#db{
+	    		font-size: 2em;
+	    	}
+	    	.btnMinus {
+	    		width: 3em;
+	    		height: 3em;
+	    	}
+	    	#fixed-bottom{
+	    		position: fixed;
+	    		top: 0px;
+	    		left: 0px;
+	    		font-size: 1.5em;
+	    		background-color: lightgray;	
+	    	}
+	    	body { min-width: 320px; }
+	    	.below-item{
+	    		margin-right: 1em;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div id="all">
+			<!--script src="jquery-1.11.2.js"></script-->
+			<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+			<script src="http://lib.sinaapp.com/js/underscore/1.4.4/underscore-min.js"></script>
+			<!--cript src="underscore.js"></script-->
+			<script src="date-extension.js"></script>
+
+			<div id="h">
+				<input id="allitms" value="蛋糕 绿豆糕 椰子酥" type="text"></input>
+				<button class="btn" id="btnStart">开始</button>
+			</div>
+			
+
+			<div id="work">
+
+			</div>
+			
+			<div id="editing">
+			</div>
+
+			<div id="kk">
+				<button class="btn" id="btnDone">添加</button>
+				<button class="btn" id="btnCancel">重置</button>
+			</div>
+
+
+			<hr/>
+			<div id="db">
+			</div>
+			<hr/>
+			<div id="fixed-bottom"></div>
+			<button id="btnClear" class="btn">删除旧数据</button>
+			<button id="btnReload" class="btn">重设商品</button>
+			<script src="cake.js">
+				
+			</script>
+		</div>
+	</body>
+</html>

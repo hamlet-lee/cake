@@ -1,0 +1,8 @@
+{
+  "connectionLimit": 10,
+  "host"     : "localhost",
+  "user"     : "",
+  "password" : "",
+  "database" : "cake",
+  "charset" : "UTF8_GENERAL_CI"
+}
