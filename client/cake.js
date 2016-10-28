@@ -227,7 +227,7 @@ $(function(){
 			contentType: 'application/json',
 			data: JSON.stringify(uploadList),
 			success: function(res) {
-				var text = res.responseText;
+				var text = res;
 				alert(text);
 			},
 			error: function(err){
