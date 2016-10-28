@@ -228,7 +228,7 @@ $(function(){
 				}
 			}
 		}
-		alert( JSON.stringify( uploadList ) );
+		//alert( JSON.stringify( uploadList ) );
 		$.ajax({
 			url: "/addMany",
 			method: "POST",
