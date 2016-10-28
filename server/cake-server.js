@@ -45,7 +45,7 @@ app.post('/addMany', function (req, res){
   var num = arr.length;
   arr.forEach( function(elem) {
     console.log( "adding item: " + JSON.stringify(elem) );
-    var q = `insert into tbl_sell(ts, kind, quantity) values (${elem.ts}, '${elem.kind}', ${elem.quantity} )`;
+    var q = `insert into tbl_sell(ts, kind, quantity, seller) values (FROM_UNIXTIME(${(elem.ts * 0.001)}), '${elem.kind}', ${elem.quantity}, '${elem.seller}' )`;
     pool.query(q, function(err){
         if( err != undefined && err.code == "ER_DUP_ENTRY" ){
 		old=old+1;
