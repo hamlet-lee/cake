@@ -45,10 +45,13 @@ function setDisableDoneCancel(b){
 	$("#btnCancel").prop('disabled', b);
 	$("#btnDone").prop('disabled', b);
 }
-
+function getSeller(){
+	return localStorage["seller"] || "你的姓名";
+}
 function showDb(){
 	var $db = $("#db").empty();
 	var db = getDb();
+	$("#seller").val( getSeller() );
 	var sum = {};
 	var $tbl = $("<table>");
 	$db.append( $tbl );
@@ -94,11 +97,12 @@ function showDb(){
 		}));
 	$tbl.append($sum);
 
-	var $bottom = $(_.template('<div>总计<%- totalCount %>: ' +
+	var $bottom = $(_.template('<div>(<%- seller%>) 总计<%- totalCount %>: ' +
 			'<%for(var i=0; i<itmList.length; i++){%>' +
 				'<span class="below-item"><%- itmList[i]%><%- sum[itmList[i]] || 0 %></span>'+
 			'<%}%>' + 
 			' </div>', {
+			seller: getSeller(),
 			sum: sum,
 			itmList: itmList,
 			totalCount: totalCount
@@ -194,6 +198,7 @@ $(function(){
 		$("#work").append($tbl);
 		$("#h").hide();
 		$("#kk").show();
+		localStorage["seller"] = $("#seller").val();
 		showDb();
 		setDisableReload(false);
 	});
@@ -205,6 +210,7 @@ $(function(){
 	$("#btnUpload").on(action, function f(){
 		var db = getDb();
 		var uploadList = [];
+		var seller = getSeller();
 		for( var i=0; i<db.length; i++) {
 			var o = db[i];
 			for( var j=0; j<itmList.length; j++){
@@ -214,7 +220,8 @@ $(function(){
 					uploadList.push({
 						ts: myTs,
 						kind: itmList[j],
-						quantity: q
+						quantity: q,
+						seller: seller
 					});
 				}
 			}
