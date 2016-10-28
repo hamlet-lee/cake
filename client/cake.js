@@ -239,8 +239,9 @@ $(function(){
 				var text = res;
 				alert(text);
 			},
-			error: function(err){
-				alert(err);
+			error: function(xhr, status, error) {
+			  var err = xhr.responseText;
+			  alert(err);
 			}
 		});
 	});
