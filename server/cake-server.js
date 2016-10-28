@@ -46,7 +46,7 @@ app.post('/addMany', function (req, res){
   arr.forEach( function(elem) {
     console.log( "adding item: " + JSON.stringify(elem) );
     var ts;
-    if( elem.ts.indexOf(' ') < 0 ){
+    if( typeof(elem.ts) == "strting" && elem.ts.indexOf(' ') < 0 ){
 	ts = `FROM_UNIXTIME(${(elem.ts * 0.001)})`;
     } else{
         ts = `'${elem.ts}'`; 
