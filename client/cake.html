@@ -61,10 +61,17 @@
 	    		width: 3em;
 	    		height: 3em;
 	    	}
-	    	#fixed-bottom{
+	    	#fixed-topper{
 	    		position: fixed;
 	    		top: 0px;
 	    		left: 0px;
+	    		font-size: 1.5em;
+	    		background-color: lightgray;	
+	    	}
+			#fixed-bottom{
+	    		position: fixed;
+	    		bottom: 0px;
+	    		right: 0px;
 	    		font-size: 1.5em;
 	    		background-color: lightgray;	
 	    	}
@@ -106,6 +113,7 @@
 			<div id="db">
 			</div>
 			<hr/>
+			<div id="fixed-topper"></div>
 			<div id="fixed-bottom"></div>
 			<button id="btnUpload" class="btn">上传服务器</button>
 			<button id="btnClear" class="btn">删除旧数据</button>

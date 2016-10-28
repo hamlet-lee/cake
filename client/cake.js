@@ -97,16 +97,17 @@ function showDb(){
 		}));
 	$tbl.append($sum);
 
-	var $bottom = $(_.template('<div>(<%- seller%>) 总计<%- totalCount %>: ' +
+	var $topper = $(_.template('<div>总计<%- totalCount %>: ' +
 			'<%for(var i=0; i<itmList.length; i++){%>' +
 				'<span class="below-item"><%- itmList[i]%><%- sum[itmList[i]] || 0 %></span>'+
 			'<%}%>' + 
 			' </div>', {
-			seller: getSeller(),
 			sum: sum,
 			itmList: itmList,
 			totalCount: totalCount
 		}));
+	var $bottom = $(_.template('<div><%- seller %></div>', {seller: getSeller()}));
+	$("#fixed-topper").empty().append( $topper );
 	$("#fixed-bottom").empty().append( $bottom );
 	//$total = $("<div>").text( "汇总: " + JSON.stringify(sum) );
 	//$db.prepend( $("<hr>"));
