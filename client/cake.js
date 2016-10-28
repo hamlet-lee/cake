@@ -63,7 +63,10 @@ function showDb(){
 	var totalCount = 0;
 	for( var i=0; i<db.length; i++) {
 		var dbi = db[i];
-		var $tr = $(_.template('<tr><td><%=dbi.ts%></td> ' +
+		if( dbi.tsStr == undefined && typeof(dbi.ts) == "string" && dbi.ts.indexOf(' ') > 0 ){
+			dbi.tsStr = dbi.ts;
+		}
+		var $tr = $(_.template('<tr><td><%=dbi.tsStr%></td> ' +
 			'<%for(var i=0; i<itmList.length; i++){%>' +
 				'<td><%- dbi.content[itmList[i]] || 0 %></td>'+
 			'<%}%>' + 
@@ -156,8 +159,10 @@ $(function(){
 	$("#btnDone").on(action, function (){
 		//put to localStorage
 		var db = getDb();
+		var ts = new Date().getTime();
 		db.unshift ({
-			ts: Date.getCurrentTimeStr(new Date()),
+			ts: ts,
+			tsStr: Date.getCurrentTimeStr(new Date(ts)),
 			content: editing
 		});
 		localStorage["db"] =  JSON.stringify(db);
@@ -197,6 +202,40 @@ $(function(){
 		init();
 	});
 
+	$("#btnUpload").on(action, function f(){
+		var db = getDb();
+		var uploadList = [];
+		for( var i=0; i<db.length; i++) {
+			var o = db[i];
+			for( var j=0; j<itmList.length; j++){
+				var q = o.content[itmList[j]];
+				var myTs = (typeof(o.ts) == "string" && o.ts.indexOf(" ") > 0)? Date.parse(o.ts): o.ts;
+				if( q > 0) {
+					uploadList.push({
+						ts: myTs,
+						kind: itmList[j],
+						quantity: q
+					});
+				}
+			}
+		}
+		console.log( JSON.stringify( uploadList ) );
+		$.ajax({
+			url: "/addMany",
+			method: "POST",
+			processData: false,
+			contentType: 'application/json',
+			data: JSON.stringify(uploadList),
+			success: function(res) {
+				var text = res.responseText;
+				alert(text);
+			},
+			error: function(err){
+				alert(err);
+			}
+		});
+	});
+	
 	function init(){
 		setDisableReload(true);
 		setDisableDoneCancel(true);
